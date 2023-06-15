@@ -13,6 +13,8 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import java.awt.List;
 import java.awt.Label;
+import entidad.Servidor;
+
 
 public class FrmServidor extends JInternalFrame {
 	private JTextField textNomEmpresa;
@@ -25,9 +27,9 @@ public class FrmServidor extends JInternalFrame {
 	private JTextField textRegion;
 	private JTextField textIPServidor;
 	private JTextField textHostname;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textVersionMicros;
+	private JTextField textTamañoBD;
+	private JTextField textSistemaOperativo;
 
 	/**
 	 * Launch the application.
@@ -163,34 +165,36 @@ public class FrmServidor extends JInternalFrame {
 		lblNewLabel_11.setBounds(404, 285, 154, 24);
 		getContentPane().add(lblNewLabel_11);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(562, 287, 150, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textVersionMicros = new JTextField();
+		textVersionMicros.setBounds(562, 287, 150, 20);
+		getContentPane().add(textVersionMicros);
+		textVersionMicros.setColumns(10);
 		
 		JLabel lblNewLabel_12 = new JLabel("Tamaño de la BDatos:");
 		lblNewLabel_12.setBounds(404, 343, 154, 19);
 		getContentPane().add(lblNewLabel_12);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(562, 342, 150, 20);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textTamañoBD = new JTextField();
+		textTamañoBD.setBounds(562, 342, 150, 20);
+		getContentPane().add(textTamañoBD);
+		textTamañoBD.setColumns(10);
 		
 		JLabel lblNewLabel_13 = new JLabel("Sistema Operativo:");
 		lblNewLabel_13.setBounds(404, 392, 154, 19);
 		getContentPane().add(lblNewLabel_13);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(562, 391, 150, 20);
-		getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		textSistemaOperativo = new JTextField();
+		textSistemaOperativo.setBounds(562, 391, 150, 20);
+		getContentPane().add(textSistemaOperativo);
+		textSistemaOperativo.setColumns(10);
 		
 		JButton btnGenerar = new JButton("Generar");
 		btnGenerar.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnGenerar.setIcon(new ImageIcon(FrmServidor.class.getResource("/iconos/Tick.gif")));
 		btnGenerar.setBounds(182, 464, 150, 88);
 		getContentPane().add(btnGenerar);
+		
+		
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setIcon(new ImageIcon(FrmServidor.class.getResource("/iconos/Delete.gif")));

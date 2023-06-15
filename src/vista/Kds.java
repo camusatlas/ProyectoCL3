@@ -96,7 +96,7 @@ public class Kds extends JInternalFrame {
 		textEmpresaTienda.setColumns(10);
 		
 		JLabel lblNumeroTienda = new JLabel("Número de Tienda:");
-		lblNumeroTienda.setBounds(440, 74, 101, 25);
+		lblNumeroTienda.setBounds(440, 74, 128, 25);
 		getContentPane().add(lblNumeroTienda);
 		
 		textNumeroTienda = new JTextField();
@@ -105,7 +105,7 @@ public class Kds extends JInternalFrame {
 		textNumeroTienda.setColumns(10);
 		
 		JLabel lblIpKds = new JLabel("IP KDS:");
-		lblIpKds.setBounds(440, 133, 101, 19);
+		lblIpKds.setBounds(440, 133, 128, 19);
 		getContentPane().add(lblIpKds);
 		
 		textIpkds = new JTextField();
@@ -114,7 +114,7 @@ public class Kds extends JInternalFrame {
 		textIpkds.setColumns(10);
 		
 		JLabel lblEstado = new JLabel("Estado:");
-		lblEstado.setBounds(440, 190, 101, 19);
+		lblEstado.setBounds(440, 190, 128, 19);
 		getContentPane().add(lblEstado);
 		
 		textEstado = new JTextField();
@@ -123,7 +123,7 @@ public class Kds extends JInternalFrame {
 		textEstado.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Modelo:");
-		lblNewLabel_1.setBounds(440, 249, 101, 25);
+		lblNewLabel_1.setBounds(440, 249, 128, 25);
 		getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
