@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import gui.consulta.simple.ConsultaKds;
+import gui.consulta.simple.ConsultaPCGerencial;
+import gui.consulta.simple.ConsultaServidor;
+import gui.consulta.simple.ConsultaWorckStation;
+
 import java.awt.Frame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -14,17 +20,26 @@ import javax.swing.JDesktopPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 
 public class FrInicio extends JFrame implements ActionListener {
-	private JMenuItem mntmServidores;
-	private JMenuItem mntmPunto_de_Venta;
-	private JMenuItem mntmKDS;
-	private JMenuItem mntmPCGerenciales;
+	private JMenuItem mntmServidoresR;
+	private JMenuItem mntmPunto_de_VentaR;
+	private JMenuItem mntmKDSR;
+	private JMenuItem mntmPCGerencialesR;
 
 	
 	//Paso N°1
 	private FrmServidor frmServidor = new FrmServidor();
 	private Punto_de_Venta Punto_de_Venta = new Punto_de_Venta();
+	private Kds Kds = new Kds();
+	
+	//// Paso1 Consultar ////
+	private ConsultaServidor ConsultaServidor = new ConsultaServidor();
+	private ConsultaWorckStation ConsultaWorckStation = new ConsultaWorckStation();
+	private ConsultaKds ConsultaKds = new ConsultaKds();
+	private ConsultaPCGerencial ConsultaPCGerencial = new ConsultaPCGerencial();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -45,6 +60,7 @@ public class FrInicio extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public FrInicio() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrInicio.class.getResource("/iconos/Microsoft.gif")));
 		setTitle("Tiendas Delosi");
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,47 +69,89 @@ public class FrInicio extends JFrame implements ActionListener {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnListado = new JMenu("Listado");
-		mnListado.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Lists.gif")));
-		menuBar.add(mnListado);
+		JMenu mnRegistrar = new JMenu("Registrar");
+		mnRegistrar.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Lists.gif")));
+		menuBar.add(mnRegistrar);
 		
-		mntmServidores = new JMenuItem("Servidores");
-		mntmServidores.addActionListener(this);
-		mntmServidores.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Database.gif")));
-		mnListado.add(mntmServidores);
+		mntmServidoresR = new JMenuItem("Servidores");
+		mntmServidoresR.addActionListener(this);
+		mntmServidoresR.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Database.gif")));
+		mnRegistrar.add(mntmServidoresR);
 		
-		mntmPunto_de_Venta = new JMenuItem("Punto de Ventas");
-		mntmPunto_de_Venta.addActionListener(this);
-		mntmPunto_de_Venta.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Dollar.gif")));
-		mnListado.add(mntmPunto_de_Venta);
+		mntmPunto_de_VentaR = new JMenuItem("WorckStation");
+		mntmPunto_de_VentaR.addActionListener(this);
+		mntmPunto_de_VentaR.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Dollar.gif")));
+		mnRegistrar.add(mntmPunto_de_VentaR);
 		
-		mntmKDS = new JMenuItem("KDS");
-		mntmKDS.addActionListener(this);
-		mntmKDS.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Bubble.gif")));
-		mnListado.add(mntmKDS);
+		mntmKDSR = new JMenuItem("KDS");
+		mntmKDSR.addActionListener(this);
+		mntmKDSR.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Bubble.gif")));
+		mnRegistrar.add(mntmKDSR);
 		
-		mntmPCGerenciales = new JMenuItem("PCGerenciales");
-		mntmPCGerenciales.addActionListener(this);
-		mntmPCGerenciales.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Computer.gif")));
-		mnListado.add(mntmPCGerenciales);
+		mntmPCGerencialesR = new JMenuItem("PCGerenciales");
+		mntmPCGerencialesR.addActionListener(this);
+		mntmPCGerencialesR.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Computer.gif")));
+		mnRegistrar.add(mntmPCGerencialesR);
 		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_1);
+		JMenu mnConsultar = new JMenu("Consultar");
+		mnConsultar.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Closed folder.gif")));
+		menuBar.add(mnConsultar);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
-		mnNewMenu_1.add(mntmNewMenuItem_2);
+		JMenuItem mntmServidorC = new JMenuItem("Consulta Servidor");
+		mntmServidorC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultaServidor.setVisible(true);
+			}
+		});
+		mntmServidorC.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Database.gif")));
+		mnConsultar.add(mntmServidorC);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
-		mnNewMenu_1.add(mntmNewMenuItem_3);
+		JMenuItem mntmWordStationC = new JMenuItem("Consulta WorckStation");
+		mntmWordStationC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultaWorckStation.setVisible(true);
+			}
+		});
+		mntmWordStationC.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Dollar.gif")));
+		mnConsultar.add(mntmWordStationC);
 		
-		JMenu mnNewMenu_2 = new JMenu("New menu");
+		JMenuItem mntmKdsC = new JMenuItem("Consulta KDS");
+		mntmKdsC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultaKds.setVisible(true);
+			}
+		});
+		mntmKdsC.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Bubble.gif")));
+		mnConsultar.add(mntmKdsC);
+		
+		JMenuItem mntmPCGerencialC = new JMenuItem("Consulta PCGerecial");
+		mntmPCGerencialC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultaPCGerencial.setVisible(true);
+			}
+		});
+		mntmPCGerencialC.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Computer.gif")));
+		mnConsultar.add(mntmPCGerencialC);
+		
+		JMenu mnNewMenu_2 = new JMenu("Mantenimiento");
+		mnNewMenu_2.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Open file.gif")));
 		menuBar.add(mnNewMenu_2);
 		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("New menu item");
-		mnNewMenu_2.add(mntmNewMenuItem_4);
+		JMenuItem mntmServidorM = new JMenuItem("Servidor");
+		mntmServidorM.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Database.gif")));
+		mnNewMenu_2.add(mntmServidorM);
 		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("New menu item");
-		mnNewMenu_2.add(mntmNewMenuItem_5);
+		JMenuItem mntmWorckStationM = new JMenuItem("WorckStation");
+		mntmWorckStationM.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Dollar.gif")));
+		mnNewMenu_2.add(mntmWorckStationM);
+		
+		JMenuItem mntmKdsM = new JMenuItem("KDS");
+		mntmKdsM.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Bubble.gif")));
+		mnNewMenu_2.add(mntmKdsM);
+		
+		JMenuItem mntmPCGerencialM = new JMenuItem("PCGerencial");
+		mntmPCGerencialM.setIcon(new ImageIcon(FrInicio.class.getResource("/iconos/Computer.gif")));
+		mnNewMenu_2.add(mntmPCGerencialM);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -105,23 +163,31 @@ public class FrInicio extends JFrame implements ActionListener {
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		contentPane.add(desktopPane);
-		
-		//Paso N°2
-		desktopPane.add(frmServidor);
 		desktopPane.add(Punto_de_Venta);
+		frmServidor.setBounds(61, 0, 786, 607);
+		//Punto_de_Venta.getContentPane().add(frmServidor);
+		desktopPane.add(Kds);
+		desktopPane.add(frmServidor);
+		
+		//Paso 2 consulta
+		desktopPane.add(ConsultaServidor);
+		desktopPane.add(ConsultaWorckStation);
+		desktopPane.add(ConsultaKds);
+		desktopPane.add(ConsultaPCGerencial);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == mntmPCGerenciales) {
+		if (e.getSource() == mntmPCGerencialesR) {
 			actionPerformedMntmPCGerencialesJMenuItem(e);
 		}
-		if (e.getSource() == mntmKDS) {
+		if (e.getSource() == mntmKDSR) {
 			actionPerformedMntmKDSJMenuItem(e);
 		}
-		if (e.getSource() == mntmPunto_de_Venta) {
+		if (e.getSource() == mntmPunto_de_VentaR) {
 			actionPerformedMntmPunto_de_VentaJMenuItem(e);
 		}
-		if (e.getSource() == mntmServidores) {
+		if (e.getSource() == mntmServidoresR) {
 			actionPerformedMntmServidoresJMenuItem(e);
 		}
 	}
@@ -132,7 +198,7 @@ public class FrInicio extends JFrame implements ActionListener {
 		Punto_de_Venta.setVisible(true);
 	}
 	protected void actionPerformedMntmKDSJMenuItem(ActionEvent e) {
-		
+		Kds.setVisible(true);
 	}
 	protected void actionPerformedMntmPCGerencialesJMenuItem(ActionEvent e) {
 		
